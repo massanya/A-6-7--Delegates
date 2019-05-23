@@ -10,17 +10,24 @@ namespace Advanced_Lesson_7_Delegates
     {
         static void Main(string[] args)
         {
-            //Lesson.SortNumbersExample();
-            //Lesson.SortVectorsExample();
-            //Lesson.SortVectorsGenericExample();
-            //Lesson.SortWithDelegatesExample();
-            //Lesson.SingleAndMulticastExample();
-            //Lesson.SortWithAnonymousFunction();
-            //Lesson.SortWithLambdaFunction();
-            //Lesson.CarDelegateExample();
-            //Lesson.ExamExample();
-            Practice.L7P1_Calculator();
-            Console.ReadLine();
+			//Lesson.SortNumbersExample();
+			//Lesson.SortVectorsExample();
+			//Lesson.SortVectorsGenericExample();
+			//Lesson.SortWithDelegatesExample();
+			//Lesson.SingleAndMulticastExample();
+			//Lesson.SortWithAnonymousFunction();
+			//Lesson.SortWithLambdaFunction();
+			//Lesson.CarDelegateExample();
+			//Lesson.ExamExample();
+			Practice practice = new Practice();
+
+			practice.StringFormater();
+
+			foreach (var text in practice.text)
+			{
+				Console.WriteLine(text);
+			}
+			Console.ReadLine();
         }
     }
 }

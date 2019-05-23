@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Advanced_Lesson_7_Delegates
 {
-    public class Practice
+	delegate string StrMod(string str);
+	public class Practice
     {
         /// <summary>
         /// L7.P1. Переписать консольный калькулятор с использованием делегатов. 
@@ -45,18 +46,46 @@ namespace Advanced_Lesson_7_Delegates
         {
             return x - y;
         }
-        /// <summary>
-        /// L7.P2. Создать расширяющий метод для коллекции строк.
-        /// Метод должен принимать делегат форматирующей функции для строки.
-        /// Метод должен проходить по всем элементам коллекции и применять данную форматирующую функцию к каждому элементу.
-        /// Реализовать следующие форматирующие функции:
-        /// Перевод строки в заглавные буквы.
-        /// Замена пробелов на подчеркивание.
-        /// Продемонстрировать работу расширяющего метода.
-        /// </summary>
-        public static void L7P2_StringFormater()
-        {
+		/// <summary>
+		/// L7.P2. Создать расширяющий метод для коллекции строк.
+		/// Метод должен принимать делегат форматирующей функции для строки.
+		/// Метод должен проходить по всем элементам коллекции и применять данную форматирующую функцию к каждому элементу.
+		/// Реализовать следующие форматирующие функции:
+		/// Перевод строки в заглавные буквы.
+		/// Замена пробелов на подчеркивание.
+		/// Продемонстрировать работу расширяющего метода.
+		/// </summary>
+		public static string ToUpperAndReplaceSpaces(string str)
+		{
+			return String.Format(str.ToUpper().Replace(' ', '_'));
+		}
 
-        }
+		public List<string> text = new List<string>()
+		{
+			"я взвесил за и взвесил против",
+			"а разность в весе поделил",
+			"на возраст солнечной системы",
+			"и получилось сорок два"
+
+		};
+
+		public void StringFormater()
+		{
+			StrMod str = ToUpperAndReplaceSpaces;
+			text.StringFormater(str);
+		}
     }
+
+    static class Extensions
+    {
+	    public static List<string> StringFormater(this List<string> text, StrMod strMod)
+	    {
+		    for (int i = 0; i < text.Count; i++)
+		    {
+			    text[i] = strMod(text[i]);
+		    }
+
+		    return text;
+	    }
+	}
 }
